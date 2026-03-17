@@ -180,6 +180,8 @@ export default function DistributionChart({
           >
             <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
             <XAxis 
+                type="number"
+                domain={['dataMin', 'dataMax']}
                 dataKey="score" 
                 tick={{ fill: '#475569', fontWeight: 600 }}
                 axisLine={{ stroke: '#cbd5e1', strokeWidth: 2 }}
