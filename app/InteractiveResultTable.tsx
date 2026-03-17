@@ -51,8 +51,11 @@ export default function InteractiveResultTable({ results }: InteractiveResultTab
             
             {/* --- N (Count) --- */}
             <tr className="border-b-2 border-slate-100">
-              <td className="p-4 font-bold text-slate-700 border-r-2 border-slate-100">
-                N (Số lượng)
+              <td className="p-4 border-r-2 border-slate-100">
+                <div className="flex flex-col">
+                  <span className="font-bold text-slate-700">N (Số lượng)</span>
+                  <span className="text-xs text-slate-500 mt-1">Tổng số lượng mẫu thu thập được.</span>
+                </div>
               </td>
               <td className="p-4 font-mono text-center">{cStats.n}</td>
               <td className="p-4 font-mono text-center border-l-2 border-slate-100">{eStats.n}</td>
@@ -63,9 +66,12 @@ export default function InteractiveResultTable({ results }: InteractiveResultTab
               onClick={() => toggleRow("mean")}
               className="hover:bg-slate-100 transition-colors border-b-2 border-slate-100 bg-slate-50/50 cursor-pointer group"
             >
-              <td className="p-4 font-bold text-slate-800 border-r-2 border-slate-100 group-hover:text-blue-700 flex items-center justify-between">
-                <span>Giá trị Trung bình (Mean)</span>
-                <span className="text-slate-400 group-hover:text-blue-500 text-sm">{expandedRow === "mean" ? "▲" : "▼"}</span>
+              <td className="p-4 border-r-2 border-slate-100 flex items-center justify-between">
+                <div className="flex flex-col">
+                  <span className="font-bold text-slate-800 group-hover:text-blue-700 transition-colors">Giá trị Trung bình (Mean)</span>
+                  <span className="text-xs text-slate-500 mt-1">Trọng tâm của dữ liệu (tính bằng tổng chia số lượng).</span>
+                </div>
+                <span className="text-slate-400 group-hover:text-blue-500 text-sm ml-2">{expandedRow === "mean" ? "▲" : "▼"}</span>
               </td>
               <td className="p-4 font-mono text-center">{formatNumber(cStats.mean)}</td>
               <td className="p-4 font-mono text-center border-l-2 border-slate-100">{formatNumber(eStats.mean)}</td>
@@ -101,8 +107,11 @@ export default function InteractiveResultTable({ results }: InteractiveResultTab
 
             {/* --- Median --- */}
             <tr className="border-b-2 border-slate-100">
-              <td className="p-4 font-bold text-slate-700 border-r-2 border-slate-100">
-                Trung vị (Median)
+              <td className="p-4 border-r-2 border-slate-100">
+                <div className="flex flex-col">
+                  <span className="font-bold text-slate-700">Trung vị (Median)</span>
+                  <span className="text-xs text-slate-500 mt-1">Điểm nằm chính giữa khi sắp xếp thứ tự dữ liệu.</span>
+                </div>
               </td>
               <td className="p-4 font-mono text-center">{formatNumber(cStats.median)}</td>
               <td className="p-4 font-mono text-center border-l-2 border-slate-100">{formatNumber(eStats.median)}</td>
@@ -110,8 +119,11 @@ export default function InteractiveResultTable({ results }: InteractiveResultTab
 
             {/* --- Mode --- */}
             <tr className="border-b-2 border-slate-100 bg-slate-50/50">
-              <td className="p-4 font-bold text-slate-700 border-r-2 border-slate-100">
-                Yếu vị (Mode)
+              <td className="p-4 border-r-2 border-slate-100">
+                <div className="flex flex-col">
+                  <span className="font-bold text-slate-700">Yếu vị (Mode)</span>
+                  <span className="text-xs text-slate-500 mt-1">Mức điểm xuất hiện với tần suất nhiều nhất.</span>
+                </div>
               </td>
               <td className="p-4 font-mono text-center">{formatMode(cStats.mode)}</td>
               <td className="p-4 font-mono text-center border-l-2 border-slate-100">{formatMode(eStats.mode)}</td>
@@ -122,9 +134,12 @@ export default function InteractiveResultTable({ results }: InteractiveResultTab
               onClick={() => toggleRow("stddev")}
               className="hover:bg-slate-100 transition-colors border-b-4 border-slate-300 cursor-pointer group"
             >
-              <td className="p-4 font-bold text-slate-800 border-r-2 border-slate-100 group-hover:text-blue-700 flex items-center justify-between">
-                <span>Độ lệch chuẩn (Standard Deviation)</span>
-                <span className="text-slate-400 group-hover:text-blue-500 text-sm">{expandedRow === "stddev" ? "▲" : "▼"}</span>
+              <td className="p-4 border-r-2 border-slate-100 flex items-center justify-between">
+                <div className="flex flex-col">
+                  <span className="font-bold text-slate-800 group-hover:text-blue-700 transition-colors">Độ lệch chuẩn (Standard Deviation)</span>
+                  <span className="text-xs text-slate-500 mt-1">Mức độ phân tán của điểm số quanh mức trung bình.</span>
+                </div>
+                <span className="text-slate-400 group-hover:text-blue-500 text-sm ml-2">{expandedRow === "stddev" ? "▲" : "▼"}</span>
               </td>
               <td className="p-4 font-mono text-center">{formatNumber(cStats.stdDev)}</td>
               <td className="p-4 font-mono text-center border-l-2 border-slate-100">{formatNumber(eStats.stdDev)}</td>
@@ -170,9 +185,12 @@ export default function InteractiveResultTable({ results }: InteractiveResultTab
               onClick={() => toggleRow("tstat")}
               className="hover:bg-slate-100 transition-colors border-b-2 border-slate-100 cursor-pointer group"
             >
-              <td className="p-4 font-bold text-slate-800 border-r-2 border-slate-100 group-hover:text-blue-700 flex items-center justify-between">
-                <span>Kiểm định T (T-Statistic)</span>
-                <span className="text-slate-400 group-hover:text-blue-500 text-sm">{expandedRow === "tstat" ? "▲" : "▼"}</span>
+              <td className="p-4 border-r-2 border-slate-100 flex items-center justify-between">
+                <div className="flex flex-col">
+                  <span className="font-bold text-slate-800 group-hover:text-blue-700 transition-colors">Kiểm định T (T-Statistic)</span>
+                  <span className="text-xs text-slate-500 mt-1">Mức độ khác biệt nhóm so sánh với mức độ biến thiên dữ liệu.</span>
+                </div>
+                <span className="text-slate-400 group-hover:text-blue-500 text-sm ml-2">{expandedRow === "tstat" ? "▲" : "▼"}</span>
               </td>
               <td colSpan={2} className="p-4 font-mono text-center bg-slate-50 font-bold group-hover:bg-slate-100">
                 {formatNumber(iStats.tStat)}
@@ -206,9 +224,12 @@ export default function InteractiveResultTable({ results }: InteractiveResultTab
               onClick={() => toggleRow("df")}
               className="hover:bg-slate-100 transition-colors border-b-2 border-slate-100 bg-slate-50/50 cursor-pointer group"
             >
-              <td className="p-4 font-bold text-slate-800 border-r-2 border-slate-100 group-hover:text-blue-700 flex items-center justify-between">
-                <span>Bậc tự do (Degrees of Freedom - df)</span>
-                <span className="text-slate-400 group-hover:text-blue-500 text-sm">{expandedRow === "df" ? "▲" : "▼"}</span>
+              <td className="p-4 border-r-2 border-slate-100 flex items-center justify-between">
+                <div className="flex flex-col">
+                  <span className="font-bold text-slate-800 group-hover:text-blue-700 transition-colors">Bậc tự do (Degrees of Freedom - df)</span>
+                  <span className="text-xs text-slate-500 mt-1">Số lượng giá trị có thể tự do biến thiên trong tính toán.</span>
+                </div>
+                <span className="text-slate-400 group-hover:text-blue-500 text-sm ml-2">{expandedRow === "df" ? "▲" : "▼"}</span>
               </td>
               <td colSpan={2} className="p-4 font-mono text-center bg-white font-bold group-hover:bg-slate-100">
                 {formatNumber(iStats.df)}
@@ -239,8 +260,11 @@ export default function InteractiveResultTable({ results }: InteractiveResultTab
 
             {/* --- P-Value 1-tailed --- */}
             <tr className="border-b-2 border-slate-100">
-              <td className="p-4 font-bold text-slate-700 border-r-2 border-slate-100">
-                P-Value (1 phía / 1-tailed)
+              <td className="p-4 border-r-2 border-slate-100">
+                <div className="flex flex-col">
+                  <span className="font-bold text-slate-700">P-Value (1 phía / 1-tailed)</span>
+                  <span className="text-xs text-slate-500 mt-1">Xác suất mức độ khác biệt chỉ xem xét lớn hơn HOẶC nhỏ hơn.</span>
+                </div>
               </td>
               <td colSpan={2} className={`p-4 font-mono text-center bg-slate-50 font-bold ${iStats.pValueOneTailed < 0.05 ? "text-green-600" : "text-slate-900"}`}>
                 {formatNumber(iStats.pValueOneTailed)}
@@ -249,8 +273,11 @@ export default function InteractiveResultTable({ results }: InteractiveResultTab
 
             {/* --- P-Value 2-tailed --- */}
             <tr className="border-b-4 border-slate-300 bg-slate-50/50">
-              <td className="p-4 font-bold text-slate-700 border-r-2 border-slate-100">
-                P-Value (2 phía / 2-tailed)
+              <td className="p-4 border-r-2 border-slate-100">
+                <div className="flex flex-col">
+                  <span className="font-bold text-slate-700">P-Value (2 phía / 2-tailed)</span>
+                  <span className="text-xs text-slate-500 mt-1">Xác suất tồn tại sự khác biệt bất kỳ tính theo cả 2 đầu.</span>
+                </div>
               </td>
               <td colSpan={2} className={`p-4 font-mono text-center bg-white font-bold ${iStats.pValueTwoTailed < 0.05 ? "text-green-600" : "text-slate-900"}`}>
                 {formatNumber(iStats.pValueTwoTailed)}
